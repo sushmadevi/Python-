@@ -1,0 +1,61 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh13580\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 #book.py\
+\
+class Book:\
+    def __init__(self, title, author, year):\
+        self.title = title\
+        self.author = author\
+        self.year = year\
+    def __str__(self):\
+        return f"\{self.title\} by \{self.author\} (\{self.year\})"\
+        \
+    def book_list():\
+        return []\
+    def add_book(book_list, title, author, year):\
+        new_book = Book(title, author, year)\
+        book_list.append(new_book)\
+        print(f'Book "\{title\}" by \{author\} printed in the \{year\} added to the list.') \
+    def update_book(self, title, author, year):\
+        self.title = title\
+        self.author = author\
+        self.year = year\
+#main.py\
+from library import book_list, add_book\
+def main_menu():\
+    while True:\
+        print("\\nLibrary Management System")\
+        print("1. List all books")\
+        print("2. Add a new book")\
+        print("3. Exit")\
+        option = input("Enter your option: ")\
+        if option == "1":\
+            books = book_list()\
+            if books:\
+                print("Books in the library:")\
+                for book in books:\
+                    print(book)\
+            else:\
+                print("No books in the library.")\
+        elif option == "2":\
+            title = input("Enter the book title: ")\
+            author = input("Enter the book author: ")\
+            year = input("Enter the year published: ")\
+            try:\
+                year = int(year)\
+                add_book(title, author, year)\
+                print("Book added successfully.")\
+except ValueError:\
+                print("Year must be an integer.")\
+        elif option == "3":\
+            print("Exiting the application.")\
+            break\
+        else:\
+            print("Invalid option. Please try again.")\
+    main_menu()\
+print(main_menu())}
